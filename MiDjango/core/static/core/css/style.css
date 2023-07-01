@@ -1,0 +1,294 @@
+body{
+    font-family: sans-serif;
+    margin: 0;
+}
+
+/*logo principal*/
+
+.primerlogo{
+    text-align: center;
+    margin-top: -1%;
+    margin-bottom: 1%;
+    background-color: white;
+
+}
+
+/* Navbar dentro de la lista */
+.menu{
+    margin-left: 50px;
+    margin-right:160px;
+    font-size: large;
+} 
+
+/* Navbar fuera de la lista */
+
+.menu2{
+    margin-right: 50px;
+    margin-left: 60px;
+
+}
+
+/* icon del carrito*/
+
+.icon-cart{
+    width: 25px;
+    height: 40px;
+    color: #fff;
+}
+
+.container-icon{
+    position: relative;
+    cursor: pointer;
+}
+
+.count-products{
+    position: absolute;
+    top: 55%;
+    right: 0;
+
+    background-color:#2d6073;
+    color: #fff;
+    width: 15px;
+    height: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+#contador-productos{
+    font-size: 12px;
+}
+
+.container-cart-products{
+    position: absolute;
+    top: 50px;
+    right: 0;
+
+    background-color: #fff;
+    width: 400px;
+    z-index: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+    border-radius: 10px;
+    
+}
+
+.cart-product{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+
+}
+
+.info-cart-product{
+    display: flex;
+    justify-content: space-between;
+    flex: 0.8;
+}
+
+.titulo-producto-carrito{
+    font-size: 15px;
+}
+
+.precio-producto-carrito{
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.cantidad-producto-carrito{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.icon-close{
+    width: 25px;
+    height: 25px;
+}
+
+.icon-close:hover{
+    stroke: red;
+    cursor: pointer;
+}
+
+.cart-total{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    gap: 20px;
+}
+
+.cart-total h3{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.total-pagar{
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.hidden-cart{
+    display: none;
+    align-items: center;
+}
+
+.cart-empty{
+    padding: 10px;
+    text-align: center;
+}
+
+.cart-button{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+
+/*carrusel*/
+
+.carousel-inner img{
+
+    width: 100%;
+    height: 100%;
+
+}
+   
+/* Banner productos mas vendidos*/
+
+.bestsales{
+
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    color: #fff;
+    background-color: #65b8a6;
+    padding: 10px 10px 10px 10px;
+}
+
+
+/*productos mas vendidos y cards */
+
+.container-items{
+    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+    
+.item{
+    border-radius: 5px;
+}
+    
+.item:hover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+}
+    
+.item img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    transition: all .5s;
+}
+    
+.item figure{
+    overflow: hidden;
+}
+    
+.item:hover img{
+    transform: scale(1.2);
+}
+    
+.info-product{
+    padding: 15px 30px;
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+    
+.price{
+    font-size: 18px;
+    font-weight: 900;
+}
+    
+.info-product a, button{
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    background-color: #65b8a6;
+    color: #fff;
+    padding: 15px 10px;
+}
+
+.detalles{
+    display: flex;
+    padding: 30px 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.detalles img{
+    margin-left: 5%;
+    max-width: 500px;
+    max-height: 400px;
+}
+
+.descripcion{
+    margin-left: 5%;
+
+}
+
+.descripcion p{ 
+    margin-right: 5%;
+    margin-bottom: 10%;
+
+}
+
+.buy{
+
+    text-align: center;
+    text-decoration: none;
+    background-color: #65b8a6;
+    color: #fff;
+    margin-top: 20px;
+    padding: 25px 25px;
+
+}
+
+/* indicadores de precio */
+
+.money-widget {
+    background-color: #65b8a6;
+    border: 2px solid #2d6073;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .money-widget h2 {
+    color: #fff;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  .logo {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+  }
+  
+  .money-value {
+    font-size: 24px;
+    color: #fff;
+    margin-top: 10px;
+  }

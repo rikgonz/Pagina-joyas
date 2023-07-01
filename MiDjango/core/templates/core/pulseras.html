@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%load static%}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulseras</title>
+  <link rel="shortcut icon" href="{% static 'core/img/icono.ico' %}" />
+  <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<body>
+  <!--logo principal--->
+  <div class="primerlogo">
+    <a href="#"> <img src="{% static 'core/img/logo sin frase.jpeg' %}" width="200" height="200"></a>
+  </div>
+
+  <!--navbar con menu de opciones-->
+
+  <nav class="navbar navbar-expand-lg navbar-dark"
+    style="font-family: sans-serif; background-color: #65b8a6; padding: 20px; margin-bottom: 5%;">
+    <div class="container-fluid">
+      <button class="navbar-toggler active" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item menu">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
+          </li>
+          <li class="nav-item menu">
+            <a class="nav-link active" aria-current="page" href="{% url 'nosotros' %}">Sobre nosotros</a>
+          </li>
+          <li class="nav-item menu">
+            <a class="nav-link active"
+              href="https://api.whatsapp.com/send/?phone=56951124876&text=Hola%21%21+Tengo+una+pregunta.+Me+podr%C3%ADan+ayudar+%3F%3F&type=phone_number&app_absent=0">Contacto</a>
+          </li>
+        </ul>
+        <!-- menu de categorias -->
+        <div class="dropdown menu2">
+          <button class="btn btn-sucess dropdown-toggle" style="color: white; font-size: large;" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Categoria
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="{% url 'accesorios' %}">Accesorios</a></li>
+            <li><a class="dropdown-item" href="{% url 'anillos' %}">Anillos</a></li>
+            <li><a class="dropdown-item" href="{% url 'aros' %}">Aros</a></li>
+            <li><a class="dropdown-item" href="{% url 'collares' %} ">Collares</a></li>
+            <li><a class="dropdown-item" href="{% url 'pulseras' %}">Pulseras</a></li>
+            <li><a class="dropdown-item" href="{% url 'tobilleras' %}">Tobilleras</a></li>
+          </ul>
+        </div>
+      </div>
+      <!--Carrito de compras-->
+      <div class="container-icon menu2">
+        <div class="container-cart-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="icon-cart">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+          </svg>
+          <div class="count-products">
+            <span id="contador-productos">0</span>
+          </div>
+        </div>
+
+        <div class="container-cart-products hidden-cart">
+          <div class="row-product hidden">
+            <div class="cart-product">
+              <div class="info-cart-product">
+                <span class="cantidad-producto-carrito"></span>
+                <p class="titulo-producto-carrito">Vacio</p>
+                <span class="precio-producto-carrito"></span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="icon-close">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="cart-total hidden">
+            <h3>Total:</h3>
+            <span class="total-pagar">$0</span>
+            <p class="cart-empty"></p>
+          </div>
+
+          <!--boton para el modal-->
+          <div class="cart-button">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Comprar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel"> Formulario de Compras</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <form class="row g-3 needs-validation" novalidate>
+              <div class="col-md-4">
+                <label for="validationCustom03" class="form-label">Nombres</label>
+                <input type="text" class="form-control" id="validationCustom03" required>
+                <div class="invalid-feedback">
+                  Por favor, proporcione nombres válidos.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationCustom03" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="validationCustom03" required>
+                <div class="invalid-feedback">
+                  Por favor, proporcione apellidos válidos.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationCustomUsername" class="form-label">Email</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text" id="inputGroupPrepend">@</span>
+                  <input type="text" class="form-control" id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend" required>
+                  <div class="invalid-feedback">
+                    Por favor, proporcione email válido.
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">Direccion</label>
+                <input type="text" class="form-control" id="validationCustom03" required>
+                <div class="invalid-feedback">
+                  Por favor, proporcione direccion valida.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">Ciudad</label>
+                <input type="text" class="form-control" id="validationCustom03" required>
+                <div class="invalid-feedback">
+                  Por favor, proporcione ciudad valida.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">Comuna</label>
+                <input type="text" class="form-control" id="validationCustom03" required>
+                <div class="invalid-feedback">
+                  Por favor, proporcione comuna valida.
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="validationCustom05" class="form-label">Fono</label>
+                <input type="text" class="form-control" id="validationCustom05" required>
+                <div class="invalid-feedback">
+                  Por favor, proporcione numero de celular válido.
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                  <label class="form-check-label" for="invalidCheck">
+                    Agree to terms and conditions
+                  </label>
+                  <div class="invalid-feedback">
+                    Tienes que aceptar los terminos antes de continuar.
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit">Enivar formulario</button>
+              </div>
+            </form>
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </nav>
+
+
+  <!--detalle del producto-->
+
+  <div class="container">
+
+    <div class="container-items row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
+      <div class="col item">
+        <figure>
+          <img src="{% static 'core/img/PulseraCorazon.jpg' %}" />
+        </figure>
+        <div class="info-product">
+          <h2>Pulsera MIX corazón</h2>
+          <p class="price">$ 3990</p>
+          <button class="btn-add-cart">Añadir al carrito</button>
+        </div>
+      </div>
+      <div class="col item">
+        <figure>
+          <img src="{% static 'core/img/PulseraAzul.jpg' %}" />
+        </figure>
+        <div class="info-product">
+          <h2>Pulsera Cristal Azul</h2>
+          <p class="price">$ 11990</p>
+          <button class="btn-add-cart">Añadir al carrito</button>
+        </div>
+      </div>
+      <div class="col item">
+        <figure>
+          <img src="{% static 'core/img/PulseraElsa.jpg' %}" />
+        </figure>
+        <div class="info-product">
+          <h2>Pulsera Elsa</h2>
+          <p class="price">$ 5990</p>
+          <button class="btn-add-cart">Añadir al carrito</button>
+        </div>
+      </div>
+      <div class="item col">
+        <figure>
+          <img src="{% static 'core/img/PulseraMnadala.jpg' %}" />
+        </figure>
+        <div class="info-product">
+          <h2>Pulsera Mandala</h2>
+          <p class="price">$ 7990</p>
+          <button class="btn-add-cart">Añadir al carrito</button>
+        </div>
+      </div>
+      <div class="col item">
+        <figure>
+          <img src="{% static 'core/img/PulseraVerde.jpg' %}" />
+        </figure>
+        <div class="info-product">
+          <h2>Pulsera Cristal Verde</h2>
+          <p class="price">$ 11990</p>
+          <button class="btn-add-cart">Añadir al carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <footer class="text-light" style="background-color: #65b8a6;">
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Información de Contacto</h5>
+          <ul class="list-unstyled">
+            <li>Teléfono: +56 95112 XXX </li>
+            <li>Email: contacto@AlhanaJoyasyAccesorios.cl</li>
+            <li>Dirección: Quilicura</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Enlaces</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a
+                href="https://api.whatsapp.com/send/?phone=56951124876&text=Hola%21%21+Tengo+una+pregunta.+Me+podr%C3%ADan+ayudar+%3F%3F&type=phone_number&app_absent=0">Contacto</a>
+            </li>
+            <li><button type="button" class="btn btn-link" style="margin-left: -13px; margin-top: -5px;"
+                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Política de seguridad
+              </button>
+            </li>
+            <li><button type="button" class="btn btn-link" style="margin-left: -13px; margin-top: -8px;"
+                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Términos y condiciones de uso
+              </button>
+            </li>
+            <li><a href="preguntas.html">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Redes Sociales</h5>
+          <ul class="list-unstyled">
+            <li><a
+                href="https://api.whatsapp.com/send/?phone=56951124876&text=Hola%21%21+Tengo+una+pregunta.+Me+podr%C3%ADan+ayudar+%3F%3F&type=phone_number&app_absent=0">WhatsApp</a>
+            </li>
+            <li><a href="https://www.instagram.com/alhanajoyasaccesorios/">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>Alhana joyas y accesorios | Horario de atención: Lunes a Viernes de 9:00 a 19:00 | Copyright ©
+            <script>document.write(new Date().getFullYear())</script>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!--Modal de politicas de seguridad -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Política de seguridad</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="text-align: justify;">
+          En nuestro sitio web, la seguridad de su información personal es nuestra máxima prioridad. A continuación, se
+          describen las medidas que hemos tomado para garantizar la seguridad de sus datos y su privacidad:
+          <br>
+          1. Protección de datos personales: Todos los datos personales que recolectamos se almacenan en servidores
+          seguros y están protegidos por medidas de seguridad físicas, técnicas y administrativas. Solo aquellos
+          empleados autorizados tienen acceso a su información personal y están obligados a mantener la
+          confidencialidad.
+          <br>
+          2. Procesamiento de pagos: Cuando realiza una compra en nuestro sitio web, sus datos de pago son procesados
+          por proveedores de servicios de pago seguros y confiables, que cumplen con los estándares de seguridad de la
+          industria.
+          <br>
+          3. Política de contraseñas: Para proteger su cuenta en nuestro sitio web, le recomendamos que elija una
+          contraseña segura y única y que no la comparta con nadie. También recomendamos que cambie su contraseña
+          periódicamente y que no utilice la misma contraseña en múltiples sitios web.
+          <br>
+          4. Encriptación de datos: Todos los datos que envía y recibe en nuestro sitio web están encriptados con
+          tecnología SSL (Secure Socket Layer), que es un estándar de seguridad de la industria.
+          <br>
+          5. Actualizaciones de seguridad: Mantenemos nuestros sistemas y software actualizados con los últimos parches
+          de seguridad para garantizar que nuestras medidas de seguridad sean efectivas.
+          <br>
+          6. Uso de cookies: Utilizamos cookies para mejorar la experiencia del usuario en nuestro sitio web. Sin
+          embargo, no utilizamos cookies para recopilar información personal sin su consentimiento. Puede optar por no
+          recibir cookies en cualquier momento cambiando la configuración de su navegador web.
+          <br>
+          7. Notificación de brechas de seguridad: En caso de una violación de seguridad en nuestro sitio web, nos
+          comprometemos a informar a todos los usuarios afectados dentro de las 72 horas de haberse descubierto la
+          violación.
+          <br>
+          En resumen, nos comprometemos a tomar todas las medidas necesarias para garantizar la seguridad y privacidad
+          de su información personal en nuestro sitio web. Si tiene alguna pregunta o inquietud sobre nuestra política
+          de seguridad, no dude en contactarnos.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+
+        </div>
+      </div>
+    </div>
+
+    <!--Modal para terminos y condiciones-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Términos y Condiciones de Uso</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" style="text-align: justify;">
+
+            1. Introducción:
+            Los presentes términos y condiciones de uso (en adelante, "Términos") establecen las normas y regulaciones
+            que rigen el acceso y uso de nuestro sitio web de joyas (en adelante, "Sitio"). Al acceder y utilizar
+            nuestro Sitio, usted acepta estos Términos en su totalidad. Si no está de acuerdo con estos Términos, debe
+            dejar de usar nuestro Sitio inmediatamente.
+            <br>
+            2. Uso de nuestro sitio web:
+            Nuestro Sitio está diseñado para ser utilizado para fines legales y únicamente para su uso personal. Usted
+            se compromete a no utilizar nuestro Sitio para ningún propósito ilegal o no autorizado.
+            <br>
+            3. Propiedad intelectual:
+            Todo el contenido presente en nuestro Sitio, incluyendo pero no limitado a, textos, gráficos, imágenes,
+            fotografías, logotipos, marcas comerciales, nombres comerciales, diseños, software y códigos, es propiedad
+            de nuestra empresa o de nuestros proveedores y está protegido por leyes de propiedad intelectual.
+            <br>
+            4. Precios y pagos:
+            Los precios de nuestros productos están sujetos a cambios sin previo aviso. Nos reservamos el derecho de
+            cambiar los precios de nuestros productos en cualquier momento y de corregir errores en los precios y
+            descripciones de los productos que aparecen en nuestro Sitio. Todos los precios que aparecen en nuestro
+            Sitio incluyen los impuestos aplicables. Los pagos se procesan a través de proveedores de servicios de pago
+            seguros y confiables.
+            <br>
+            5. Política de envío:
+            Nos esforzamos por enviar sus productos en el menor tiempo posible y dentro de los plazos de entrega que se
+            indican en nuestro Sitio. Sin embargo, no somos responsables de ningún retraso en la entrega causado por
+            factores externos fuera de nuestro control.
+            <br>
+            6. Limitación de responsabilidad:
+            En ningún caso seremos responsables de cualquier daño indirecto, incidental, especial o consecuente que
+            surja del uso o la imposibilidad de usar nuestro Sitio o nuestros productos. Además, no seremos responsables
+            por ningún daño, pérdida o lesión causados por el incumplimiento de estos Términos por nuestra parte.
+            <br>
+            7. Modificación de los Términos:
+            Nos reservamos el derecho de modificar estos Términos en cualquier momento y sin previo aviso. Los cambios
+            serán efectivos en el momento de su publicación en nuestro Sitio. Es su responsabilidad revisar estos
+            Términos periódicamente para estar al tanto de cualquier cambio.
+            <br>
+            8. Ley aplicable y jurisdicción:
+            Estos Términos se regirán e interpretarán de acuerdo con las leyes del país en el que nuestra empresa está
+            registrada. Cualquier disputa que
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+
+          </div>
+        </div>
+      </div>
+
+      <footer class="text-light" style="background-color: #65b8a6;">
+        <div class="container py-4">
+          <div class="row">
+            <div class="col-md-4">
+              <h5>Información de Contacto</h5>
+              <ul class="list-unstyled">
+                <li>Teléfono: +56 95112 XXX </li>
+                <li>Email: contacto@AlhanaJoyasyAccesorios.cl</li>
+                <li>Dirección: Quilicura</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h5>Enlaces</h5>
+              <ul class="list-unstyled">
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a
+                    href="https://api.whatsapp.com/send/?phone=56951124876&text=Hola%21%21+Tengo+una+pregunta.+Me+podr%C3%ADan+ayudar+%3F%3F&type=phone_number&app_absent=0">Contacto</a>
+                </li>
+                <li><button type="button" class="btn btn-link" style="margin-left: -13px; margin-top: -5px;"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Política de seguridad
+                  </button>
+                </li>
+                <li><button type="button" class="btn btn-link" style="margin-left: -13px; margin-top: -8px;"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Términos y condiciones de uso
+                  </button>
+                </li>
+                <li><a href="{% url 'preguntas' %}">Preguntas frecuentes</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h5>Redes Sociales</h5>
+              <ul class="list-unstyled">
+                <li><a
+                    href="https://api.whatsapp.com/send/?phone=56951124876&text=Hola%21%21+Tengo+una+pregunta.+Me+podr%C3%ADan+ayudar+%3F%3F&type=phone_number&app_absent=0">WhatsApp</a>
+                </li>
+                <li><a href="https://www.instagram.com/alhanajoyasaccesorios/">Instagram</a></li>
+              </ul>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <p>Alhana joyas y accesorios | Horario de atención: Lunes a Viernes de 9:00 a 19:00 | Copyright ©
+                <script>document.write(new Date().getFullYear())</script>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!--Modal de politicas de seguridad -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Política de seguridad</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="text-align: justify;">
+              En nuestro sitio web, la seguridad de su información personal es nuestra máxima prioridad. A continuación,
+              se describen las medidas que hemos tomado para garantizar la seguridad de sus datos y su privacidad:
+              <br>
+              1. Protección de datos personales: Todos los datos personales que recolectamos se almacenan en servidores
+              seguros y están protegidos por medidas de seguridad físicas, técnicas y administrativas. Solo aquellos
+              empleados autorizados tienen acceso a su información personal y están obligados a mantener la
+              confidencialidad.
+              <br>
+              2. Procesamiento de pagos: Cuando realiza una compra en nuestro sitio web, sus datos de pago son
+              procesados por proveedores de servicios de pago seguros y confiables, que cumplen con los estándares de
+              seguridad de la industria.
+              <br>
+              3. Política de contraseñas: Para proteger su cuenta en nuestro sitio web, le recomendamos que elija una
+              contraseña segura y única y que no la comparta con nadie. También recomendamos que cambie su contraseña
+              periódicamente y que no utilice la misma contraseña en múltiples sitios web.
+              <br>
+              4. Encriptación de datos: Todos los datos que envía y recibe en nuestro sitio web están encriptados con
+              tecnología SSL (Secure Socket Layer), que es un estándar de seguridad de la industria.
+              <br>
+              5. Actualizaciones de seguridad: Mantenemos nuestros sistemas y software actualizados con los últimos
+              parches de seguridad para garantizar que nuestras medidas de seguridad sean efectivas.
+              <br>
+              6. Uso de cookies: Utilizamos cookies para mejorar la experiencia del usuario en nuestro sitio web. Sin
+              embargo, no utilizamos cookies para recopilar información personal sin su consentimiento. Puede optar por
+              no recibir cookies en cualquier momento cambiando la configuración de su navegador web.
+              <br>
+              7. Notificación de brechas de seguridad: En caso de una violación de seguridad en nuestro sitio web, nos
+              comprometemos a informar a todos los usuarios afectados dentro de las 72 horas de haberse descubierto la
+              violación.
+              <br>
+              En resumen, nos comprometemos a tomar todas las medidas necesarias para garantizar la seguridad y
+              privacidad de su información personal en nuestro sitio web. Si tiene alguna pregunta o inquietud sobre
+              nuestra política de seguridad, no dude en contactarnos.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+
+            </div>
+          </div>
+        </div>
+
+        <!--Modal para terminos y condiciones-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Términos y Condiciones de Uso</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" style="text-align: justify;">
+
+                1. Introducción:
+                Los presentes términos y condiciones de uso (en adelante, "Términos") establecen las normas y
+                regulaciones que rigen el acceso y uso de nuestro sitio web de joyas (en adelante, "Sitio"). Al acceder
+                y utilizar nuestro Sitio, usted acepta estos Términos en su totalidad. Si no está de acuerdo con estos
+                Términos, debe dejar de usar nuestro Sitio inmediatamente.
+                <br>
+                2. Uso de nuestro sitio web:
+                Nuestro Sitio está diseñado para ser utilizado para fines legales y únicamente para su uso personal.
+                Usted se compromete a no utilizar nuestro Sitio para ningún propósito ilegal o no autorizado.
+                <br>
+                3. Propiedad intelectual:
+                Todo el contenido presente en nuestro Sitio, incluyendo pero no limitado a, textos, gráficos, imágenes,
+                fotografías, logotipos, marcas comerciales, nombres comerciales, diseños, software y códigos, es
+                propiedad de nuestra empresa o de nuestros proveedores y está protegido por leyes de propiedad
+                intelectual.
+                <br>
+                4. Precios y pagos:
+                Los precios de nuestros productos están sujetos a cambios sin previo aviso. Nos reservamos el derecho de
+                cambiar los precios de nuestros productos en cualquier momento y de corregir errores en los precios y
+                descripciones de los productos que aparecen en nuestro Sitio. Todos los precios que aparecen en nuestro
+                Sitio incluyen los impuestos aplicables. Los pagos se procesan a través de proveedores de servicios de
+                pago seguros y confiables.
+                <br>
+                5. Política de envío:
+                Nos esforzamos por enviar sus productos en el menor tiempo posible y dentro de los plazos de entrega que
+                se indican en nuestro Sitio. Sin embargo, no somos responsables de ningún retraso en la entrega causado
+                por factores externos fuera de nuestro control.
+                <br>
+                6. Limitación de responsabilidad:
+                En ningún caso seremos responsables de cualquier daño indirecto, incidental, especial o consecuente que
+                surja del uso o la imposibilidad de usar nuestro Sitio o nuestros productos. Además, no seremos
+                responsables por ningún daño, pérdida o lesión causados por el incumplimiento de estos Términos por
+                nuestra parte.
+                <br>
+                7. Modificación de los Términos:
+                Nos reservamos el derecho de modificar estos Términos en cualquier momento y sin previo aviso. Los
+                cambios serán efectivos en el momento de su publicación en nuestro Sitio. Es su responsabilidad revisar
+                estos Términos periódicamente para estar al tanto de cualquier cambio.
+                <br>
+                8. Ley aplicable y jurisdicción:
+                Estos Términos se regirán e interpretarán de acuerdo con las leyes del país en el que nuestra empresa
+                está registrada. Cualquier disputa que
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+
+              </div>
+            </div>
+          </div>
+          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+      integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+      crossorigin="anonymous"></script>
+      <script src="{% static 'core/js/main.js' %}"> </script>
+
+</body>
+
+</html>
