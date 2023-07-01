@@ -14,7 +14,7 @@ $(document).ready(function () {
   });
 });
 
-/*// jquery de la plata en clp
+// jquery de la plata en clp
 
 $(document).ready(function () {
   $.get(
@@ -35,7 +35,7 @@ $(document).ready(function () {
     }
   );
 });
-*/
+
 
 const btnCart = document.querySelector(".container-cart-icon");
 const containerCartProducts = document.querySelector(
