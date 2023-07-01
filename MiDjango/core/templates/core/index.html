@@ -41,7 +41,7 @@
             <a class="nav-link active" aria-current="page" href="{% url 'nosotros' %}">Sobre nosotros</a>
           </li>
           <li class="nav-item menu">
-            <a class="nav-link active" href="#">Contacto</a>
+            <a class="nav-link active" aria-current="page" href="#">Contacto</a>
           </li>
         </ul>
         <!-- menu de categorias -->
@@ -301,7 +301,7 @@
       </div>
       <div class="col item">
         <figure>
-          <img src="{'% static core/img/TobilleraBohemia.jpg'%}" />
+          <img src="{% static 'core/img/TobilleraBohemia.jpg'%}" />
         </figure>
         <div class="info-product">
           <h2>Tobillera Bohemia</h2>
@@ -311,7 +311,7 @@
       </div>
       <div class="item col">
         <figure>
-          <img src="{% static 'core/img/collar estrellas.jpg'}" />
+          <img src="{% static 'core/img/collar estrellas.jpg'%}" />
         </figure>
         <div class="info-product">
           <h2>Collar estrellas</h2>
@@ -321,7 +321,7 @@
       </div>
       <div class="item col">
         <figure>
-          <img src="{% static 'core/img/PulseraMnadala.jpg'}" />
+          <img src="{% static 'core/img/PulseraMnadala.jpg'%}" />
         </figure>
         <div class="info-product">
           <h2>Pulsera Mandala</h2>
@@ -393,14 +393,6 @@
             <a href="{% url 'login' %}"> Log in</a>
 
           {% endif %}
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-md-12 text-center">
-
-            <a href="{% url 'logout' %}"> Cerrar sesion</a>
-
         </div>
       </div>
     </div>
