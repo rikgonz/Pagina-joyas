@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static%}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listado Mantencion</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <title>Listado de Productos</title>
+  <link rel="shortcut icon" href="{% static 'core/img/icono.ico' %}" />
+  <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   
 </head>
-<body>
-<h1>Listado de Mantenciones</h1>
+<body style="background-color: #F2F2F2;">
+<h1 style="text-align: center;" class="bestsales">Listado de Productos</h1>
 <div class="container">
     <div class="row">
         <table class="table">
             <thead>
-                <tr><th scope="col">id_producto</th><th scope="col">nom_producto</th><th scope="col">precio</th><th scope="col">stock</th><th scope="col">tipo_producto</th>
+                <tr><th scope="col">ID</th><th scope="col">Nombre del Producto</th><th scope="col">Precio</th><th scope="col">Stock</th><th scope="col">ID Tipo producto</th>
                 </tr>
             </thead>
             <tbody>
                 {% for i in Producto %}
                     <tr><td>{{i.id_producto}}</td><td>{{i.nom_producto}}</td><td>{{i.precio}}</td><td>{{i.stock}}</td><td>{{i.tipo_producto}}</td>
-                        <td><a href="{% url 'producto_modificar' i.id_producto %}">Modificar</a></td>
-                        <td><a href="{% url 'producto_dele' i.id_producto %}">Eliminar</a></td>
+                        <td><a href="{% url 'producto_modificar' i.id_producto %} " class="btn btn-primary">Modificar</a></td>
+                        <td><a href="{% url 'producto_dele' i.id_producto %}" class="btn btn-danger">Eliminar</a></td>
                         
                     </tr>
                 {% endfor %}
             </tbody>
 
         </table>
-        <a href="{% url 'producto_form' %}">Agregar Nuevo Producto</a>
+        <a href="{% url 'producto_form' %}" class="btn btn-secondary" >Agregar Productos</a>
+        <hr>
+        <a href="{% url 'menu' %}" class="btn btn-dark" >Volver al Menu</a>
     </div>
 
 </div>
