@@ -31,9 +31,11 @@ class Producto(models.Model):
     precio = models.DecimalField(max_digits=25, decimal_places=2)
     stock = models.IntegerField()
     tipo_producto = models.ForeignKey(TipoProducto, on_delete=models.CASCADE)
+    imagen = models.CharField(max_length=255, default='default_image.jpg')
 
     def __str__(self):
         return self.nom_producto
+
 
 
 class Cliente(models.Model):
@@ -60,11 +62,11 @@ class Venta(models.Model):
 
 
 class DetalleVenta(models.Model):
-    cantidad = models.IntegerField()
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
     venta = models.ForeignKey(Venta, on_delete=models.CASCADE)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.IntegerField()
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return f"Detalle de venta #{self.venta.id_venta}"
