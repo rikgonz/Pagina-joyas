@@ -60,135 +60,6 @@
           </ul>
         </div>
       </div>
-      <!--Carrito de compras-->
-      <div class="container-icon menu2">
-        <div class="container-cart-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="icon-cart">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-          </svg>
-          <div class="count-products">
-            <span id="contador-productos">0</span>
-          </div>
-        </div>
-
-        <div class="container-cart-products hidden-cart">
-          <div class="row-product hidden">
-            <div class="cart-product">
-              <div class="info-cart-product">
-                <span class="cantidad-producto-carrito"></span>
-                <p class="titulo-producto-carrito">Vacio</p>
-                <span class="precio-producto-carrito"></span>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="icon-close">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </div>
-          </div>
-
-          <div class="cart-total hidden">
-            <h3>Total:</h3>
-            <span class="total-pagar">$0</span>
-            <p class="cart-empty"> </p>
-          </div>
-          <!--boton para el modal-->
-          <div class="cart-button">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-              Comprar
-            </button>
-          </div>
-        </div>  
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-      aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel"> Formulario de Compras</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-
-            <form class="row g-3 needs-validation" novalidate>
-              <div class="col-md-4">
-                <label for="validationCustom03" class="form-label">Nombres</label>
-                <input type="text" class="form-control" id="validationCustom03" required>
-                <div class="invalid-feedback">
-                  Por favor, proporcione nombres válidos.
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="validationCustom03" class="form-label">Apellidos</label>
-                <input type="text" class="form-control" id="validationCustom03" required>
-                <div class="invalid-feedback">
-                  Por favor, proporcione apellidos válidos.
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="validationCustomUsername" class="form-label">Email</label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend">@</span>
-                  <input type="text" class="form-control" id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend" required>
-                  <div class="invalid-feedback">
-                    Por favor, proporcione email válido.
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <label for="validationCustom03" class="form-label">Direccion</label>
-                <input type="text" class="form-control" id="validationCustom03" required>
-                <div class="invalid-feedback">
-                  Por favor, proporcione direccion valida.
-                </div>
-              </div>
-              <div class="col-md-6">
-                <label for="validationCustom03" class="form-label">Ciudad</label>
-                <input type="text" class="form-control" id="validationCustom03" required>
-                <div class="invalid-feedback">
-                  Por favor, proporcione ciudad valida.
-                </div>
-              </div>
-              <div class="col-md-6">
-                <label for="validationCustom03" class="form-label">Comuna</label>
-                <input type="text" class="form-control" id="validationCustom03" required>
-                <div class="invalid-feedback">
-                  Por favor, proporcione comuna valida.
-                </div>
-              </div>
-              <div class="col-md-3">
-                <label for="validationCustom05" class="form-label">Fono</label>
-                <input type="text" class="form-control" id="validationCustom05" required>
-                <div class="invalid-feedback">
-                  Por favor, proporcione numero de celular válido.
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                  <label class="form-check-label" for="invalidCheck">
-                    Agree to terms and conditions
-                  </label>
-                  <div class="invalid-feedback">
-                    Tienes que aceptar los terminos antes de continuar.
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <button class="btn btn-primary" type="submit">Enivar formulario</button>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          </div>
-        </div>
-      </div>
     </div>
   </nav>
 
@@ -275,63 +146,29 @@
   </div>
 
   <!--cards productos mas vendidos-->
-
-  <div class="container">
-
-    <div class="container-items row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
-      <div class="col item">
-        <figure>
-          <img src="{% static 'core/img/anillo serpiente.jpg' %}" />
-        </figure>
-        <div class="info-product">
-          <h2>Anillo con serpiente</h2>
-          <p class="price">$ 6990</p>
-          <button class="btn-add-cart">Añadir al carrito</button>
+  <div class="card container-items">
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+      {% for i in Producto %}
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{{ i.imagen }}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{ i.nom_producto }}</h5>
+            <p class="card-text">Precio: ${{ i.precio }}</p>
+            <a href="#" class="btn btn-primary">Agregar al carrito</a>
+          </div>
         </div>
       </div>
-      <div class="col item">
-        <figure>
-          <img src="{% static 'core/img/aros onix negros.webp' %}" />
-        </figure>
-        <div class="info-product">
-          <h2>Aros Onix</h2>
-          <p class="price">$ 14990</p>
-          <button class="btn-add-cart">Añadir al carrito</button>
-        </div>
-      </div>
-      <div class="col item">
-        <figure>
-          <img src="{% static 'core/img/TobilleraBohemia.jpg'%}" />
-        </figure>
-        <div class="info-product">
-          <h2>Tobillera Bohemia</h2>
-          <p class="price">$ 17990</p>
-          <button class="btn-add-cart">Añadir al carrito</button>
-        </div>
-      </div>
-      <div class="item col">
-        <figure>
-          <img src="{% static 'core/img/collar estrellas.jpg'%}" />
-        </figure>
-        <div class="info-product">
-          <h2>Collar estrellas</h2>
-          <p class="price">$ 7990</p>
-          <button class="btn-add-cart">Añadir al carrito</button>
-        </div>
-      </div>
-      <div class="item col">
-        <figure>
-          <img src="{% static 'core/img/PulseraMnadala.jpg'%}" />
-        </figure>
-        <div class="info-product">
-          <h2>Pulsera Mandala</h2>
-          <p class="price">$ 7990</p>
-          <button class="btn-add-cart">Añadir al carrito</button>
-        </div>
-      </div>
+      {% if forloop.counter|divisibleby:3 and not forloop.last %}
     </div>
-
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+      {% endif %}
+      {% endfor %}
+    </div>
   </div>
+
+  
+
 
 
   <footer class="text-light" style="background-color: #65b8a6; margin-top: 40px;">
