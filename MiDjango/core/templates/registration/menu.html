@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eliminar</title>
+  <title>Menu</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
   <link rel="shortcut icon" href="{% static 'core/img/icono.ico' %}" />
   <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
@@ -69,9 +69,71 @@
             <a href="{% url 'producto_listar' %}" class="btn-add-cart">Listado de Productos</a>
             <a href="{% url 'producto_form' %}" class="btn-add-cart">Agregar Productos</a>
         </div>
+      </div> 
+      <div class="col item">
+        <figure>
+          <img src="{% static 'core/img/ciudad.jpg' %}" />
+        </figure>
+        <div class="info-product">
+          <h2 style="text-align: center;">Ciudades</h2>
+            <a href="{% url 'ciudad_listar' %}" class="btn-add-cart">Listado de Ciudades</a>
+            <a href="{% url 'ciudad_form' %}" class="btn-add-cart">Agregar Ciudades</a>
+        </div>
       </div>   
+      <div class="col item">
+        <figure>
+          <img src="{% static 'core/img/city-hall.png' %}" />
+        </figure>
+        <div class="info-product">
+          <h2 style="text-align: center;">Comuna</h2>
+            <a href="{% url 'comuna_listar' %}" class="btn-add-cart">Listado de Comunas</a>
+            <a href="{% url 'comuna_form' %}" class="btn-add-cart">Agregar Comunas</a>
+        </div>
+      </div> 
+      <div class="col item">
+        <figure>
+          <img src="{% static 'core/img/pngwing.com.png' %}" />
+        </figure>
+        <div class="info-product">
+          <h2 style="text-align: center;">Tipo Producto</h2>
+            <a href="{% url 'tipo_producto_listar' %}" class="btn-add-cart">Listado de Tipo de Producto</a>
+            <a href="{% url 'tipo_producto_form' %}" class="btn-add-cart">Agregar Tipo de Producto</a>
+        </div>
+      </div> 
+      <div class="col item">
+        <figure>
+          <img src="{% static 'core/img/b19adad89f3fe0630ee1968aa7364920.jpg' %}" />
+        </figure>
+        <div class="info-product">
+          <h2 style="text-align: center;">Cliente</h2>
+            <a href="{% url 'cliente_listar' %}" class="btn-add-cart">Listado Cliente</a>
+            <a href="{% url 'cliente_form' %}" class="btn-add-cart">Agregar Cliente</a>
+        </div>
+      </div> 
+      <div class="col item">
+        <figure>
+          <img src="{% static 'core/img/ilustracion-del-icono-de-diseno-de-sello-negro-a-bajo-precio-2b6bmwm.jpg' %}" />
+        </figure>
+        <div class="info-product">
+          <h2 style="text-align: center;">Venta</h2>
+            <a href="{% url 'venta_listar' %}" class="btn-add-cart">Listado Venta</a>
+            <a href="{% url 'venta_form' %}" class="btn-add-cart">Agregar Venta</a>
+        </div>
+      </div>
+      <div class="col item">
+        <figure>
+          <img src="{% static 'core/img/signo-de-dolar.png' %}" />
+        </figure>
+        <div class="info-product">
+          <h2 style="text-align: center;">Detalle Venta</h2>
+            <a href="{% url 'detalle_venta_listar' %}" class="btn-add-cart">Listado Detalle Venta</a>
+            <a href="{% url 'detalle_venta_form' %}" class="btn-add-cart">Agregar Detalle Venta</a>
+        </div>
+      </div> 
     </div>
 </div>
+
+
 
 
 
