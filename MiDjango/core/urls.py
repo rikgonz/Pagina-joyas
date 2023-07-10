@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import index, accesorios, anillos, aros, collares, pulseras, tobilleras, nosotros, preguntas, producto_form,producto_dele, producto_listar, producto_modificar, menu, ciudad_form, ciudad_dele, ciudad_listar, ciudad_modificar, comuna_dele, comuna_form, comuna_listar, comuna_modificar, tipo_producto_dele, tipo_producto_form, tipo_producto_listar, tipo_producto_modificar, cliente_dele, cliente_form, cliente_listar, cliente_modificar, detalle_venta_dele, detalle_venta_form, detalle_venta_listar, detalle_venta_modificar, venta_dele, venta_form, venta_listar, venta_modificar
+from .views import index, accesorios, anillos, aros, collares, pulseras, tobilleras, nosotros, preguntas, producto_form,producto_dele, producto_listar, producto_modificar, menu, ciudad_form, ciudad_dele, ciudad_listar, ciudad_modificar, comuna_dele, comuna_form, comuna_listar, comuna_modificar, tipo_producto_dele, tipo_producto_form, tipo_producto_listar, tipo_producto_modificar, cliente_dele, cliente_form, cliente_listar, cliente_modificar, detalle_venta_form, detalle_venta_listar, venta_dele, venta_form, venta_listar, venta_modificar
 
 urlpatterns = [
     path('', index, name='index'),
@@ -46,9 +46,7 @@ urlpatterns = [
     path('venta_modificar/<id>', venta_modificar, name="venta_modificar"),
 
     path('detalle_venta_form', detalle_venta_form, name="detalle_venta_form"),
-    path('detalle_venta_dele/<id>', detalle_venta_dele, name="detalle_venta_dele"),
-    path('detalle_venta_listar', detalle_venta_listar, name="detalle_venta_listar"),
-    path('detalle_venta_modificar/<id>', detalle_venta_modificar, name="detalle_venta_modificar"),
+    path('detalle_venta_listar', detalle_venta_listar, name="detalle_venta_listar")
 
 
 

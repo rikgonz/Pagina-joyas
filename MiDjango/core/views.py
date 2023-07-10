@@ -316,7 +316,7 @@ def venta_form(request):
 
     return render(request, 'core/venta_form.html', datos)
 
-
+@login_required
 def venta_dele(request, id):
     venta = Venta.objects.get(id_venta=id)
     datos = {
@@ -330,7 +330,7 @@ def venta_dele(request, id):
 
     return render(request, 'core/venta_dele.html', datos)
 
-
+@login_required
 def venta_listar(request):
     venta = Venta.objects.all()
     datos = {
@@ -338,7 +338,7 @@ def venta_listar(request):
     }
     return render(request, 'core/venta_listar.html', datos)
 
-
+@login_required
 def venta_modificar(request, id):
     venta = Venta.objects.get(id_venta=id)
     datos = {
@@ -369,20 +369,6 @@ def detalle_venta_form(request):
     return render(request, 'core/detalle_venta_form.html', datos)
 
 @login_required
-def detalle_venta_dele(request, id):
-    detalle_venta = DetalleVenta.objects.get(id=id)
-    datos = {
-        'form': DetalleVentaForm(instance=detalle_venta)
-    }
-
-    if request.method == 'POST':
-        formulario = DetalleVentaForm(data=request.POST, instance=detalle_venta)
-        detalle_venta.delete()
-        datos['mensaje'] = "Eliminado correctamente"
-
-    return render(request, 'core/detalle_venta_dele.html', datos)
-
-@login_required
 def detalle_venta_listar(request):
     detallesventa = DetalleVenta.objects.all()
     datos = {
@@ -390,20 +376,7 @@ def detalle_venta_listar(request):
     }
     return render(request, 'core/detalle_venta_listar.html', datos)
 
-@login_required
-def detalle_venta_modificar(request, id):
-    detalle_venta = DetalleVenta.objects.get(id=id)
-    datos = {
-        'form': DetalleVentaForm(instance=detalle_venta)
-    }
 
-    if request.method == 'POST':
-        formulario = DetalleVentaForm(data=request.POST, instance=detalle_venta)
-        if formulario.is_valid():
-            formulario.save()
-            datos['mensaje'] = "Modificado correctamente"
-
-    return render(request, 'core/detalle_venta_modificar.html', datos)
 
 @login_required
 def menu(request):
